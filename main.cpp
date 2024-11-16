@@ -41,28 +41,28 @@ int main() {
             }
         }
 
-        switch (choice) {
-            case 1:
-                Player::playTwoPlayers(player1Wins, player2Wins);
-                    while (true) {
-                        cout << "Czy chcesz zagrać ponownie? (1 - Tak, 0 - Nie): ";
-                        cin >> playAgain;
-                        if (cin.fail() || (playAgain != 1 && playAgain != 0)) {
-                            cin.clear();
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                            cout << "Błąd: wybierz Tak (1) lub Nie (0).\n";
-                        } else {
-                            if (playAgain == 0) {
-                                break; 
-                            }
-                        }
-                    }
-                    break;
-            case 2:
+        if (choice == 1) {
+            Player::playTwoPlayers(player1Wins, player2Wins);
+            system("cls");
+            while (true) {
+                cout << "Czy chcesz zagrać ponownie? (1 - Tak, 0 - Nie): ";
+                cin >> playAgain;
+            if (cin.fail() || (playAgain != 1 && playAgain != 0)) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Błąd: wybierz Tak (1) lub Nie (0).\n";
+            } else {
+            if (playAgain == 0) {
+                break;
+                }
+            }
+        }
+            } else if (choice == 2) {
                 cout << "Dziękujemy za grę!\n";
                 return 0;
-            default:
+            } else {
                 cout << "Niewłaściwy wybór. Proszę spróbować ponownie.\n";
+            }
+
         }
-    }
 }
