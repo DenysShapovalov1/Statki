@@ -3,40 +3,29 @@
 
 #include <iostream>
 #include <string>
-
+#include <vector>
+#include "Ship.h"
 
 class Board {
-protected:
-    bool shotHistory[10][10];
-private:
-    char board[10][10];
-    std::string ships[10]; 
-    char shipSymbols[10]; 
-    int shipPositions[10][5][2];
-    bool shipHidden[10][10];
-    int shipCount; 
-    bool shipSunk[4];
-  
-
-
-    
-
 public:
     Board();
+    void resetShotHistory();
     void displayBoard() const;
-    void displayBoards (const Board& opponentBoard) const;
-    void hideShips();
+    void displayBoards(const Board& opponentBoard) const;
+    bool canPlaceShip(int x, int y, int size, bool horizontal, std::string& errorMessage);
     bool placeShip(int x, int y, int size, const std::string& name, bool horizontal);
     bool shoot(int x, int y);
     bool allShipsSunk() const;
-    bool canPlaceShip(int x, int y, int size, bool horizontal);
-    void resetShotHistory(); 
-    void markSurroundingCellsAsMissed(int shipIndex);
+    bool shotHistory[10][10];
+
+private:
+    char board[10][10];
+    std::vector<Ship> ships; 
+    int shipCount;
+
     bool isShipSunk(int x, int y);
     int findShipIndex(int x, int y);
+    void markSurroundingCellsAsMissed(int shipIndex);
 };
-
-
-
 
 #endif 
