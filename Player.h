@@ -9,9 +9,8 @@ protected:
     Board board;
 private:
    int wins;
-
-
 public:
+
     std::string nickname;
     Player(const std::string& name);
     void displayBoards(const Player& opponent) const;
@@ -25,7 +24,7 @@ public:
     Board& getBoard() { return board; }
     void clearConsole();
     static void playTwoPlayers(int& player1Wins, int& player2Wins);
-    
+    static std::string getPlayerNickname(int playerNumber);
 };
 
 
