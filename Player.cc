@@ -26,11 +26,7 @@ void Player::incrementWins() {
 
 
 void Player::clearConsole() {
-#ifdef _WIN32
     system("cls");
-#else
-    system("clear");
-#endif
 }
 
 void Player::placeShips() {
@@ -45,7 +41,7 @@ void Player::placeShips() {
             std::cout << "Gracz " << nickname << ", umieść " << names[i] << " (rozmiar " << sizes[i] << "):\n";
 
             while (true) {
-                std::cout << "Podaj współrzędne (x y): ";
+                std::cout << "Podaj współrzędne (x(od 0 do 9) y(od 0 do 9)): ";
                 std::cin >> x >> y;
 
                 
@@ -74,7 +70,7 @@ void Player::placeShips() {
 
             while (!board.placeShip(x, y, sizes[i], names[i], horizontal)) {
                 while (true) {
-                    std::cout << "Podaj współrzędne (x y): ";
+                    std::cout << "Podaj współrzędne (x(od 0 do 9) y(od 0 do 9)): ";
                     std::cin >> x >> y;
 
                     
@@ -112,7 +108,7 @@ void Player::placeShips() {
 bool Player::shoot(Player& opponent) {
     int x, y;
     while (true) {
-        std::cout << nickname << ", podaj współrzędne do strzału (x y): ";
+        std::cout << nickname << ", podaj współrzędne do strzału (x(od 0 do 9) y(od 0 do 9)): ";
         std::cin >> x >> y;
 
         if (std::cin.fail() || x < 0 || x > 9 || y < 0 || y > 9) {
