@@ -1,6 +1,6 @@
-#include "Player.h"
-#include "Board.h"
-#include "Ship.h"
+#include "Player.cc"
+#include "Board.cc"
+#include "Ship.cc"
 #include <iostream>
 #include <limits>
 
